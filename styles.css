@@ -1,0 +1,351 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F0F8FF; /* Fundo azul muito claro */
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    padding-top: 80px; /* Espaço pro header fixo */
+}
+
+/* Barra preta no topo (header) */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000; /* Preto */
+    color: #FFF; /* Branco */
+    text-align: center;
+    padding: 15px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.8em; /* Maior pra destacar */
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+/* Menu Hambúrguer */
+.menu-hamburguer {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+}
+
+.menu-hamburguer span {
+    background-color: #FFF;
+    height: 3px;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Menu Dropdown */
+.menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #000;
+    width: 200px;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.menu-dropdown ul {
+    list-style: none;
+    padding: 10px;
+}
+
+.menu-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+    color: #FFF;
+    border-bottom: 1px solid #333;
+}
+
+.menu-dropdown li:hover {
+    background-color: #333;
+}
+
+/* Painel lateral (gaveta) */
+.painel-lateral {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Fora da tela inicialmente */
+    width: 50%; /* 50% da tela em mobile */
+    height: 100%;
+    background-color: #FFF;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.painel-lateral.ativo {
+    right: 0; /* Aparece */
+}
+
+#conteudo-painel {
+    font-size: 1.1em;
+    color: #333;
+    white-space: pre-line; /* Mantém quebras de linha */
+}
+
+/* Modal */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1001; /* Acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+}
+
+.modal-conteudo {
+    background-color: #FFF;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.fechar {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.fechar:hover {
+    color: #000;
+}
+
+#form-adicionar h3 {
+    margin-top: 20px;
+    color: #4682B4;
+    font-size: 1.1em;
+}
+
+#form-adicionar label {
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+#form-adicionar input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#form-adicionar button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#form-adicionar button:hover {
+    background-color: #FFC107;
+}
+
+/* Seção Sobre Nós */
+.sobre-nos {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1002;
+    max-width: 500px;
+    text-align: center;
+}
+
+#fechar-sobre {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Galeria */
+#galeria {
+    text-align: center;
+}
+
+#galeria h2 {
+    margin-bottom: 20px;
+    color: #4682B4;
+}
+
+.quadros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.quadro {
+    width: 300px;
+    height: 400px;
+    background-color: #ADD8E6; /* Azul claro */
+    border: 3px solid #4682B4; /* Borda visível */
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quadro:nth-child(odd) {
+    background-color: #FFB6C1; /* Rosa claro */
+}
+
+.quadro:nth-child(3n) {
+    background-color: #90EE90; /* Verde claro */
+}
+
+.quadro:hover {
+    transform: scale(1.05);
+}
+
+.imagem-inseto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.btn-excluir {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #FF0000;
+    color: #FFF;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    display: none; /* Só aparece se logado */
+}
+
+.btn-excluir:hover {
+    background-color: #CC0000;
+}
+
+/* Fallback se imagem não carregar */
+.imagem-inseto[src=""]::after,
+.imagem-inseto[alt]:not([src])::after {
+    content: "Imagem não carregada";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+    font-size: 1.2em;
+}
+
+/* Tooltip para infos (só desktop) */
+.tooltip {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    font-size: 0.9em;
+    white-space: pre-line;
+}
+
+.quadro:hover .tooltip {
+    opacity: 1;
+}
+
+/* Responsividade pra celular */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        padding-top: 70px; /* Menos espaço pro header */
+    }
+    
+    header h1 {
+        font-size: 1.5em; /* Menor no mobile */
+    }
+    
+    .quadros {
+        flex-direction: column; /* Lista vertical */
+        gap: 15px;
+    }
+    
+    .quadro {
+        width: 90%; /* Quase toda a largura */
+        height: 200px; /* Menor pra lista */
+        max-width: 400px; /* Limite máximo */
+    }
+    
+    #galeria h2 {
+        font-size: 1.5em; /* Menor título */
+    }
+    
+    .tooltip {
+        display: none; /* Esconde tooltip no mobile, usa gaveta */
+    }
+    
+    .painel-lateral {
+        width: 50%; /* Gaveta ocupa metade */
+    }
+    
+    .modal-conteudo {
+        width: 90%; /* Modal maior no mobile */
+        margin: 10% auto;
+    }
+    
+    .sobre-nos {
+        width: 90%;
+    }
+}
