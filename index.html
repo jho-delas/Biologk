@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de Insetos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCPHav0SSx70EvO9Ndh3m3YZQZ2v7g8svs",
+            authDomain: "diarioinsetos.firebaseapp.com",
+            projectId: "diarioinsetos",
+            storageBucket: "diarioinsetos.firebasestorage.app",
+            messagingSenderId: "493274873378",
+            appId: "1:493274873378:web:d7b847dd91ae3c9e2d147b",
+            measurementId: "G-TRGNG9BHZ7"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app); // Adicionado Firestore
+
+        // Exportar db pra usar no script.js
+        window.db = db;
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Diário de Insetos</h1>
+        <div id="menu-hamburguer" class="menu-hamburguer">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="menu-dropdown" class="menu-dropdown">
+            <ul>
+                <li id="opcao-adicionar">Adicionar Inseto</li>
+                <li id="opcao-sobre">Sobre Nós</li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Painel lateral pra infos (mobile) -->
+    <div id="painel-info" class="painel-lateral">
+        <div id="conteudo-painel"></div>
+    </div>
+    
+    <!-- Modal pra adicionar inseto -->
+    <div id="modal-adicionar" class="modal">
+        <div class="modal-conteudo">
+            <span id="fechar-modal" class="fechar">&times;</span>
+            <h2>Adicionar Novo Inseto</h2>
+            <form id="form-adicionar">
+                <h3>Etiqueta de Procedência</h3>
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" required>
+                
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" required>
+                
+                <label for="pais">País:</label>
+                <input type="text" id="pais" required>
+                
+                <label for="data">Data (ex.: 17/x/2025):</label>
+                <input type="text" id="data" placeholder="00/x/0000" required>
+                
+                <label for="coletor">Nome do Coletor (ex.: JOÃO SILVA, G.A.):</label>
+                <input type="text" id="coletor" required>
+                
+                <h3>Etiqueta de Identificação</h3>
+                <label for="ordem">Ordem:</label>
+                <input type="text" id="ordem">
+                
+                <label for="familia">Família:</label>
+                <input type="text" id="familia">
+                
+                <label for="genero">Gênero:</label>
+                <input type="text" id="genero">
+                
+                <label for="especie">Espécie:</label>
+                <input type="text" id="especie">
+                
+                <label for="imagem-url">URL da Imagem (ou deixe vazio pra upload):</label>
+                <input type="url" id="imagem-url" placeholder="https://exemplo.com/imagem.jpg">
+                
+                <label for="imagem-file">Ou Faça Upload da Imagem:</label>
+                <input type="file" id="imagem-file" accept="image/*">
+                
+                <button type="submit">Adicionar Inseto</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Seção Sobre Nós (oculta por padrão) -->
+    <section id="sobre-nos" class="sobre-nos">
+        <h2>Sobre Nós</h2>
+        <p>Este é o Diário de Insetos, um projeto educacional para catalogar e etiquetar insetos seguindo normas entomológicas. Desenvolvido para atividade avaliativa para obtenção de notas na disciplina de Biologia, permitindo adicionar insetos com etiquetas de procedência e identificação, simulando uma coleção real. Use com responsabilidade e consulte um especialista para coletas reais. Projeto criado pelo grupo Twinxs do IF em 2025.</p>
+        <button id="fechar-sobre">Fechar</button>
+    </section>
+    
+   <section id="galeria">
+    <h2>Galeria de Insetos</h2>
+    <div class="quadros">
+        <!-- Novos quadros serão adicionados aqui dinamicamente -->
+    </div>
+</section>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
