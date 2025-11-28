@@ -91,9 +91,10 @@ header h1 {
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
     padding: 20px;
     transition: right 0.3s ease;
-    z-index: 999;
+    z-index: 1001; /* Aumentado pra ficar por cima do header */
     overflow-y: auto;
 }
+
 
 .painel-lateral.ativo {
     right: 0; /* Aparece */
